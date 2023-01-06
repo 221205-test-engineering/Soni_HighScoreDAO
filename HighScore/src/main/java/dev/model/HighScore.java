@@ -25,7 +25,7 @@ public class HighScore {
         return point;
     }
 
-    public void setPoint(int point) {
+    public void setPoint() {
         this.point = point;
     }
     public HighScore(){}
