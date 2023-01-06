@@ -94,6 +94,15 @@ public class ScoreDAO implements GenericDAO<HighScore> {
 
     @Override
     public void delete(int id) {
+        String sql = "delete from highscore where id = ? returning *";
+        try(Connection conn = cu.getConnection()){
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1,id);
+            ps.executeQuery();
+
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
 
     }
 }

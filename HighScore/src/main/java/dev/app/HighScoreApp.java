@@ -65,8 +65,18 @@ public class HighScoreApp {
            }
         });
 
+        app.delete("/scores/{id}", ctx ->{
+           int deleteId = Integer.parseInt(ctx.pathParam("id"));
+           scoreDAO.delete(deleteId);
+            HighScore removeId = scoreDAO.getById(deleteId);
+           if(removeId != null){
+               ctx.status(HttpStatus.FOUND);
+               ctx.result(removeId + " not deleted");
+           }else{
+               ctx.result("Record deleted successfully with id "+deleteId);
+           }
+        });
+
         app.start(8086);
-
     }
-
 }

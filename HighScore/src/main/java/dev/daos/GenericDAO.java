@@ -1,5 +1,7 @@
 package dev.daos;
 
+import dev.model.HighScore;
+
 import java.util.List;
 
 public interface GenericDAO <T>{
